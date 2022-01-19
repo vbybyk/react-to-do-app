@@ -13,7 +13,9 @@ const WorkersList = ({data, onDelete, onToggleIncrease, onToggleLike}) => {
             // <WorkersListItem name={item.name} salary={item.salary}/>
             onDelete={() => onDelete(id)}
             onToggleIncrease={() => onToggleIncrease(id)}
-            onToggleLike={() => onToggleLike(id)}/>  
+            onToggleLike={() => onToggleLike(id)}
+            // onToggleProp={(e) => onToggleProp(id, e.currentTarget.getAttribute('data-toggle'))}    Для общей функции onToggle
+            />  
             
          )   
     })

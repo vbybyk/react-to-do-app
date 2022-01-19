@@ -79,8 +79,17 @@ class App extends Component {
                 } return item;
             })
        }))
-
     }
+
+    /* onToggle = (id, prop) => {
+        this.setState(({data}) => ({
+            data: data.map(item => {
+                if (item.id === id){
+                    return {...item, [prop]: !item[prop]}    // Общий вариант для двух функций
+                } return item;
+            })
+       }))
+    } */
 
     render() {
         const teamNumber = this.state.data.length;

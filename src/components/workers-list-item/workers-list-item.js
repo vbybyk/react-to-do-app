@@ -17,6 +17,7 @@ const WorkersListItem = (props) => {
     return (
     <li className={ClassNames}>
             <span className="list-group-item-label" 
+                    data-toggle="like"
                     onClick={onToggleLike}>{name}</span>
             <input 
                 type="text" 
@@ -25,6 +26,7 @@ const WorkersListItem = (props) => {
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                     className="btn-cookie btn-sm "
+                    data-toggle="increase"
                     onClick={onToggleIncrease}>
                     <i className="fas fa-cookie"></i>
                 </button>
