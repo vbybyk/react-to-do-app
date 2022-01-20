@@ -6,11 +6,17 @@ class WorkersAddForm extends Component {
         super(props);
         this.state = {
             name: '',
-            salary:''
+            salary:'',
+            noInput: false
         }
     }
 
     onChangeValue = (e) => {
+        if (e.target.value){
+            this.setState({
+            noInput: false
+        })
+        }
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -18,30 +24,45 @@ class WorkersAddForm extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onAdd(this.state.name, this.state.salary + '$');
-        this.setState({
-            name: '',
-            salary: ''
+        if (this.state.name === '' || this.state.salary === ''){
+            this.setState({
+            noInput: true
         })
+        console.log('no input')
+        } else {
+            this.props.onAdd(this.state.name, this.state.salary + '$');
+            this.setState({
+                name: '',
+                salary: '',
+                noInput: false
+        })
+        }
+        
     }
     
 
     render() {
-        const {name, salary} = this.state;
+    
+        const {name, salary, noInput} = this.state;
+        let classNames = "form-control new-post-label";
 
+        if (noInput){
+            classNames += ' no-input'
+        }
+    
         return (
             <div className="app-add-form">
                 <h3>Добавьте нового сотрудника</h3>
                 <form onSubmit={this.onSubmit}
                     className="add-form d-flex">
                     <input type="text"
-                        className="form-control new-post-label"
+                        className={classNames}
                         name="name"
                         value={name}
                         placeholder="Type a name" 
                         onChange={this.onChangeValue}/>
                     <input type="number"
-                        className="form-control new-post-label"
+                        className={classNames}
                         name="salary"
                         value={salary}
                         placeholder="Salary?" 

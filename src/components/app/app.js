@@ -32,7 +32,8 @@ class App extends Component {
     }
 
     addNewItem = (name, salary) => { 
-        const newItem = {
+       
+            const newItem = {
             name,
             salary,
             increase: false,
@@ -111,7 +112,7 @@ class App extends Component {
                 />
 
             <WorkersAddForm 
-                onAdd={this.addNewItem}/>
+                onAdd={this.addNewItem} />
 
         </div>
     );
