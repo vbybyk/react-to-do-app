@@ -17,9 +17,24 @@ class App extends Component {
                 {name: "Matt Damon", salary: 1300 + '$', increase: true, like: false, id: 1},
                 {name: "Fred Durst", salary: 1500 + '$', increase: false, like: true, id: 2},
                 {name: "Matthew McConaughey", salary: 1800 + '$', increase: false, like: false, id: 3}
-            ]
+            ],
+            term: ''
         }
         this.maxId = 4;
+    }
+
+    searchPerson = (array, term) => {
+        if (term.length == 0){
+            return array
+        } 
+        return array.filter(item => {
+            return item.name.indexOf(term) > -1
+        })
+    }
+
+    onUpdateSearch = (term) => {
+        this.setState({
+            term: term })
     }
 
     deleteItem = (id) => {
@@ -93,19 +108,22 @@ class App extends Component {
     } */
 
     render() {
+        const {data, term} = this.state;
         const teamNumber = this.state.data.length;
         const starsNumber = this.state.data.filter(elem => elem.like).length
+        const visibleData = this.searchPerson(data, term);
+
         return (
         <div className="app">
             <AppInfo teamNumber={teamNumber} starsNumber={starsNumber}/>
 
             <div className="search-panel">
-                <SearchPanel/>
+                <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
                 <AppFilter/>
             </div>
 
             <WorkersList 
-                data={this.state.data} 
+                data={visibleData} 
                 onDelete={this.deleteItem}
                 onToggleIncrease={this.onToggleIncrease}
                 onToggleLike={this.onToggleLike}
