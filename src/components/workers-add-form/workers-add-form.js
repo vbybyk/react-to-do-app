@@ -30,7 +30,7 @@ class WorkersAddForm extends Component {
         })
         console.log('no input')
         } else {
-            this.props.onAdd(this.state.name, this.state.salary + '$');
+            this.props.onAdd(this.state.name, this.state.salary);
             this.setState({
                 name: '',
                 salary: '',

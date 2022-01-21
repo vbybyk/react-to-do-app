@@ -22,7 +22,7 @@ const WorkersListItem = (props) => {
             <input 
                 type="text" 
                 className="list-group-item-input" 
-                defaultValue={salary}/>
+                defaultValue={salary + '$'}/>
             <div className='d-flex justify-content-center align-items-center'>
                 <button type="button"
                     className="btn-cookie btn-sm "
